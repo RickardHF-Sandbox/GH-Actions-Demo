@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo Hello, ${{ vars.Message }}!
+        run: echo Hello, ${{ vars.MESSAGE }}!
   deploy-test:
     runs-on: ubuntu-latest
     environment: Test
@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo Hello, ${{ vars.Message }}!
+        run: echo Hello, ${{ vars.MESSAGE }}!
   deploy-prod:
     runs-on: ubuntu-latest
     environment: Production
@@ -26,4 +26,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
-        run: echo Hello, ${{ vars.Message }}!
+        run: echo Hello, ${{ vars.MESSAGE }}!
+      - name: Output secret
+        run: echo The secret is ${{ secrets.SOME_SECRET }}
