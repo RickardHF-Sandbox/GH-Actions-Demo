@@ -22,7 +22,7 @@ jobs:
           a: 1
           b: 3
       - name: Display result
-        run: echo result is ${{ both-numbers.outputs.sum }}
+        run: echo result is ${{ steps.both-numbers.outputs.sum }}
       - name: Step using action
         uses: RickardHF-Sandbox/DEMO-Action@main
         id: one-number
@@ -31,4 +31,4 @@ jobs:
           a: 1
           b: 3
       - name: Display result
-        run: echo result is ${{ one-number.outputs.sum }}
+        run: echo result is ${{ steps.one-number.outputs.sum }}
