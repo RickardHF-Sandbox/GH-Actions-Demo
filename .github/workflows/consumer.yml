@@ -1,0 +1,34 @@
+name: Consumer of Reusability
+
+on:
+  workflow_dispatch:
+    inputs:
+      message:
+        type: text
+        required: true
+        description: Who to greet
+
+jobs:
+  job-that-uses-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4.2.2
+      - name: Step using action
+        uses: RickardHF-Sandbox/DEMO-Action@main
+        id: both-numbers
+        with:
+          message: ${{ inputs.MESSAGE }}
+          a: 1
+          b: 3
+      - name: Display result
+        run: echo result is ${{ both-numbers.outputs.sum }}
+      - name: Step using action
+        uses: RickardHF-Sandbox/DEMO-Action@main
+        id: one-number
+        with:
+          message: ${{ inputs.MESSAGE }}
+          a: 1
+          b: 3
+      - name: Display result
+        run: echo result is ${{ one-number.outputs.sum }}
