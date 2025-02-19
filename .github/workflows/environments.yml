@@ -4,6 +4,12 @@ on:
   workflow_dispatch:
 
 jobs:
+  no-env:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo Hello, ${{ vars.MESSAGE }}!
   deploy-dev:
     runs-on: ubuntu-latest
     environment: Development
@@ -22,7 +28,7 @@ jobs:
   deploy-prod:
     runs-on: ubuntu-latest
     environment: Production
-    needs: [deploy-dev, deploy-test]
+    needs: [deploy-dev, deploy-test, no-env]
     steps:
       - uses: actions/checkout@v4
       - name: Run a one-line script
