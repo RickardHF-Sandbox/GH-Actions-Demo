@@ -12,7 +12,7 @@ on:
         description: This is some secret
     
 jobs:
-  build:
+  reusable-job:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
