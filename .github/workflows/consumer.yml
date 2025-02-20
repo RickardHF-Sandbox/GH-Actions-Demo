@@ -35,6 +35,7 @@ jobs:
     strategy:
       matrix:
         name: [Per, Pål, "Espen Askeladd"]
+        time-of-day: [morning, evening]
     uses: ./.github/workflows/reusable.yml
     with: 
       who-to-greet: ${{ matrix.name }}
