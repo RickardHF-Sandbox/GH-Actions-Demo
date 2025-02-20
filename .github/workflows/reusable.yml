@@ -1,0 +1,25 @@
+name: Reusable Workflow
+
+on:
+  workflow_call:
+    inputs:
+      who-to-greet:
+        type: string
+        description: Tell me who to greet
+        required: true
+    secrets:
+      some-secret:
+        description: This is some secret
+    
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run a one-line script
+        run: echo Hello, ${{ github.inputs.who-to-greet }} !
+      - name: Run a multi-line script
+        run: |
+          echo Add other actions to build,
+          echo Here is the secret ${{ secrets.some-secret }}
+          echo test, and deploy your project.
