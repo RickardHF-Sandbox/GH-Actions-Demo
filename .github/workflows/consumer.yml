@@ -39,5 +39,6 @@ jobs:
     uses: ./.github/workflows/reusable.yml
     with: 
       who-to-greet: ${{ matrix.name }}
+      time-of-day: ${{ matrix.time-of-day }}
     secrets:
       some-secret: ${{ secrets.GITHUB_TOKEN }}
