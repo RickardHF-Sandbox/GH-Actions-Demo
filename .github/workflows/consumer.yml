@@ -31,3 +31,12 @@ jobs:
           a: 1
       - name: Display result
         run: echo 1 = ${{ steps.one-number.outputs.sum }}
+  job-that-uses-reusable-workflow:
+    strategy:
+      matrix:
+        name: [Per, Pål, "Espen Askeladd"]
+    uses: ./.github/workflows/reusable.yml
+    with: 
+      who-to-greet: ${{ matrix.name }}
+    secrets:
+      some-secret: ${{ secrets.GITHUB_TOKEN }}
